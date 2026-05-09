@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceMatch — AI Face Comparison</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                AI Powered
+            </div>
+            <h1>Face<span class="accent">Match</span></h1>
+            <p class="subtitle">Upload two photos and let AI analyze facial similarity with precision.</p>
+        </div>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="form">
+
+            <div class="upload-grid">
+
+                <div class="upload-card" id="card1">
+                    <input type="file" name="image1" id="image1" accept="image/*" required>
+                    <label for="image1" class="upload-label">
+                        <div class="upload-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M3 19c0-3.314 4.03-6 9-6s9 2.686 9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span class="upload-title">First Photo</span>
+                        <span class="upload-hint">Click or drag image here</span>
+                        <div class="upload-preview" id="preview1"></div>
+                    </label>
+                    <div class="card-number">01</div>
+                </div>
+
+                <div class="divider-line">
+                    <div class="vs-badge">VS</div>
+                </div>
+
+                <div class="upload-card" id="card2">
+                    <input type="file" name="image2" id="image2" accept="image/*" required>
+                    <label for="image2" class="upload-label">
+                        <div class="upload-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M3 19c0-3.314 4.03-6 9-6s9 2.686 9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span class="upload-title">Second Photo</span>
+                        <span class="upload-hint">Click or drag image here</span>
+                        <div class="upload-preview" id="preview2"></div>
+                    </label>
+                    <div class="card-number">02</div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Analyze Faces</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+        </form>
+
+        <p class="footer-note">🔒 Images are processed securely and never stored.</p>
+
+    </div>
+
+    <script>
+        function handlePreview(inputId, previewId, cardId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const card = document.getElementById(cardId);
+
+            input.addEventListener('change', function () {
+                const file = this.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.style.backgroundImage = `url(${e.target.result})`;
+                    preview.classList.add('has-image');
+                    card.classList.add('filled');
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        handlePreview('image1', 'preview1', 'card1');
+        handlePreview('image2', 'preview2', 'card2');
+    </script>
+
+</body>
+</html>
