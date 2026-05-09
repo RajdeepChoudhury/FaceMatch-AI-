@@ -13,7 +13,7 @@ A modern AI-powered Face Match web application built using:
 This application allows users to upload two face images and compare facial similarity using computer vision techniques.<br>
 Note: Both the pictures must have same background to give more accurate data.<br>
 <p align="center">
-  <img src="prototype.jpg" alt="logo" width="300"/>
+  <img src="Prototype.jpg" alt="logo" width="300"/>
 </p>
 
 ---
