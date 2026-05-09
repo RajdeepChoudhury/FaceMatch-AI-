@@ -11,7 +11,7 @@ A modern AI-powered Face Match web application built using:
 - OpenCV
 
 This application allows users to upload two face images and compare facial similarity using computer vision techniques.
-## Note: Both the pictures must have same background to give more accurate data.
+Note: Both the pictures must have same background to give more accurate data.
 
 ---
 
