@@ -108,7 +108,7 @@ app.post(
             // -----------------------------
 
             const command =
-                `python face_match.py "${image1}" "${image2}"`;
+                `python3 face_match.py "${image1}" "${image2}"`;
 
             // -----------------------------
             // EXECUTE PYTHON
